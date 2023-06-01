@@ -1,5 +1,7 @@
 var letterCombinations = function(digits) {
-    if(digits.length == 0) return []
+    if(digits.length == 0) {
+		return [];
+	}
 
     const map = {
         2: ['a', 'b', 'c'],
