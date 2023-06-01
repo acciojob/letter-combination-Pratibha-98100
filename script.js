@@ -1,22 +1,32 @@
 var letterCombinations = function(digits) {
-    const result = [];
-    if (!digits) {
-        return result;
-    }
-    const mapping = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
-    const combination = new Array(digits.length).fill('');
-    backtrack(result, mapping, combination, digits, 0);
-    return result;
-};
+    if(digits.length == 0) return []
 
-function backtrack(result, mapping, combination, digits, index) {
-    if (index === digits.length) {
-        result.push(combination.join(''));
-    } else {
-        const letters = mapping[digits.charAt(index) - '0'];
-        for (const letter of letters) {
-            combination[index] = letter;
-            backtrack(result, mapping, combination, digits, index + 1);
-        }
+    const map = {
+        2: ['a', 'b', 'c'],
+        3: ['d', 'e', 'f'],
+        4: ['g', 'h', 'i'],
+        5: ['j', 'k', 'l'],
+        6: ['m', 'n', 'o'],
+        7: ['p', 'q', 'r', 's'],
+        8: ['t', 'u', 'v'],
+        9: ['w', 'x', 'y', 'z']
     }
-}
+
+    let iterate = (nums) =>{
+        let arr = []
+        if(nums.length == 1) return map[nums];
+        let first = nums.slice(0,1)
+        let others = iterate(nums.slice(1))
+
+        for(let i =0; i<map[first].length;i++){
+            for(let j =0; j<others.length;j++){
+                arr.push(map[first][i] + others[j])
+            }
+        }
+
+        return arr;
+    }
+
+    return iterate(digits)
+};
+module.exports = letterCombinations;
