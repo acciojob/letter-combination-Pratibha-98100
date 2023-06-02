@@ -1,4 +1,5 @@
-var letterCombinations(digits) {
+//1-
+function letterCombinations(digits) {
     if(digits.length == 0) {
 		return [];
 	}
