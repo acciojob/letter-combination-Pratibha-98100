@@ -1,4 +1,4 @@
-var letterCombinations = function(digits) {
+var letterCombinations(digits) {
     if(digits.length == 0) {
 		return [];
 	}
@@ -31,4 +31,5 @@ var letterCombinations = function(digits) {
 
     return iterate(digits)
 };
+
 module.exports = letterCombinations;
